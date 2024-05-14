@@ -1,3 +1,15 @@
+<?php
+
+// Database File Connect
+require_once "dbConnection.php";
+
+// Select Database Table
+$query = "SELECT * FROM blogs";
+
+// Query All Data From table
+$data = $mysqli->query($query);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,18 +28,6 @@
 </head>
 
 <body>
-  <?php
-
-  // Database File Connect
-  require_once "dbConnection.php";
-
-  // Select Database Table
-  $query = "SELECT * FROM blogs";
-
-  // Query All Data From table
-  $data = $mysqli->query($query);
-
-  ?>
   <!----------------------------- Header Here ------------------------------------>
   <header class="bg-base-200">
     <div class="navbar container mx-auto">
@@ -52,7 +52,7 @@
         </ul>
       </div>
       <div class="navbar-end">
-        <a class="btn btn-primary">Create New</a>
+        <a href="addBlog.php" class="btn btn-primary">Create New</a>
       </div>
     </div>
   </header>
@@ -63,22 +63,26 @@
 
   <div class="py-20">
     <h2 class="text-center text-4xl font-mono underline underline-offset-8 pb-5">Our Blogs</h2>
-    <div class="container mx-auto grid grid-cols-3">
+    <div class="container mx-auto grid grid-cols-3 gap-7">
       <!-- Data Fetch from Database -->
       <?php
 
-      while ($res = mysqli_fetch_assoc($data)) {
+      while ($res = $data->fetch_assoc()) {
 
-        echo '<div class="card w-96 bg-base-100 shadow-xl hover:border border-warning duration-300">';
-        echo '  <figure class="px-10 pt-10">
+        echo '<div class="card w-full bg-base-100 shadow-xl hover:border border-warning duration-300">';
+        echo '  <figure>
           <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
         </figure>';
 
-        echo '<div class="card-body items-center text-center">';
-        echo '<h2 class="card-title">'. $res['title'] . '</h2>';
-        echo '  <p>If a dog chews shoes whose shoes does he choose?</p>';
+        echo '<div class="p-2 pb-5 pt-0 items-center text-center">';
+        echo '<div class="flex justify-between items-center w-full pt-2">';
+        echo '<p class="text-sm flex items-center gap-2">'. "<i class='fa-regular fa-user'></i>" . $res['author'] . '</p>';
+        echo '<p class="text-sm flex items-center gap-2">'. '<i class="fa-regular fa-calendar-days"></i>' . $res['date'] . '</p>';
+        echo '</div>';
+        echo '<h2 class="text-white font-bold py-3 text-center text-2xl">' . $res['title'] . '</h2>';
+        echo '<p class="text-center">' . $res['description'] . '</p>';
         echo '<div class="card-actions">';
-        echo ' <button class="btn btn-primary">Buy Now</button>';
+        echo ' <button class="btn btn-primary mx-auto mt-5">Learn more</button>';
         echo '</div>';
         echo '</div>';
         echo '</div>';

@@ -14,7 +14,7 @@
 <body>
     <div class="py-10">
         <h2 class="text-center text-4xl font-mono underline underline-offset-8 pb-5">Our Blogs</h2>
-        <form class="w-[500px] mx-auto p-5 border border-primary rounded-xl shadow shadow-xl" action="addBlogAction.php">
+        <form class="w-[500px] mx-auto p-5 border border-primary rounded-xl shadow shadow-xl" action="addBlogAction.php" method="post">
             <h2 class="text-center text-3xl text-primary pb-5">New Blog</h2>
             <p class="text-lg font-mono">Blog Title</p>
             <input class="w-full text-white mb-4 bg-transparent border border-primary outline-0 px-3 py-2  rounded focus:bg-slate-800" type="text" name="title" required>
@@ -24,7 +24,7 @@
             <input class="w-full text-white mb-4 bg-transparent border border-primary outline-0 px-3 py-2  rounded focus:bg-slate-800" type="date" name="date" required>
             <p class="text-lg font-mono">Description</p>
             <textarea class="w-full text-white mb-4 bg-transparent border border-primary outline-0 px-3 py-2  rounded focus:bg-slate-800" name="description" id="" rows="6"></textarea>
-            <button class="btn btn-primary">Create</button>
+            <button value="submit" name="submit" class="btn btn-primary">Create</button>
 
         </form>
     </div>

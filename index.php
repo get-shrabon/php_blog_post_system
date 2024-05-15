@@ -71,7 +71,7 @@ $data = $mysqli->query($query);
 
         echo '<div class="card w-full bg-base-100 shadow-xl hover:border border-primary duration-300">';
         echo '  <figure>
-          <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
+          <img src="' . $res['image'] . '" alt="Shoes" class="rounded-xl" />
         </figure>';
 
         echo '<div class="p-2 pb-5 pt-0 items-center text-center">';
